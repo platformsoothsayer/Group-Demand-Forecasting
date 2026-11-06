@@ -116,8 +116,9 @@ export function summarize(engine: Engine, run: ScenarioRun, nodeId: string): Sum
     const v = b.contrib[k];
     const dir = v >= 0 ? "up" : "down";
     const params: Record<string, number | string> = { units: Math.abs(v * 3) };
-    if (k === "leads" && lc !== null) params.pct = Math.abs(lc);
-    const key = k === "leads" && lc !== null ? `explain.driver.leads.${dir}.withPct` : `explain.driver.${k}.${dir}`;
+    const withPct = k === "leads" && lc !== null && Math.abs(lc) >= 0.05 && Math.sign(lc) === Math.sign(v);
+    if (withPct) params.pct = Math.abs(lc!);
+    const key = withPct ? `explain.driver.leads.${dir}.withPct` : `explain.driver.${k}.${dir}`;
     return { key: lead ? `${key}.main` : `${key}.also`, params };
   };
   sentences.push(driverSentence(top, true));

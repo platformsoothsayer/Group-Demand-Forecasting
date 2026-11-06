@@ -44,7 +44,7 @@ const engine = new Engine(world, history, fc);
 const base = engine.run(NEUTRAL);
 {
   // OLS normal equations: S'(S b - yhat) = 0, with b the reconciled bottom means.
-  const b = fc.series.map((s, i) => s.paths.map((p, h) => p.reduce((a, x) => a + x, 0) / p.length + s.delta[h]));
+  const b = fc.series.map((s) => s.paths.map((p, h) => p.reduce((a, x) => a + x, 0) / p.length + s.delta[h]));
   let maxResid = 0;
   let scale = 0;
   for (let h = 0; h < fc.horizon; h++) {
@@ -291,6 +291,17 @@ console.log("== Copy and design");
   const kn = Object.keys(en).sort();
   const missing = ke.filter((k) => !(k in en)).concat(kn.filter((k) => !(k in es)));
   check("Dictionaries have identical keys", missing.length === 0, missing.length ? missing.slice(0, 5).join(", ") : `${ke.length} keys`);
+  const used = new Set<string>();
+  const scan = (dir: string) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) scan(p);
+      else if (/\.(ts|tsx)$/.test(e.name)) for (const m of fs.readFileSync(p, "utf8").matchAll(/\bt\("([a-zA-Z0-9_.]+)"/g)) used.add(m[1]);
+    }
+  };
+  scan(path.join(ROOT, "src"));
+  const missingUsed = [...used].filter((k) => !(k in es));
+  check("Every dictionary key used in the source exists", missingUsed.length === 0, missingUsed.length ? missingUsed.join(", ") : `${used.size} static keys`);
   const empty = [...Object.entries(es), ...Object.entries(en)].filter(([, v]) => !v || !v.trim());
   check("No empty dictionary values", empty.length === 0);
   const bad = [...Object.entries(es).map(([k, v]) => ["es", k, v]), ...Object.entries(en).map(([k, v]) => ["en", k, v])].filter(([, , v]) => /[—–;]/.test(v));

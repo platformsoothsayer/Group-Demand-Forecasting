@@ -5,12 +5,12 @@ PASS  Scenario credit +2: children sum to parents for P50 at every level and mon
 PASS  Scenario credit +2: children sum to parents on every one of the 500 sample paths  (max gap 0.0e+0)
 PASS  Quantiles ordered P10 <= P25 <= P50 <= P75 <= P90 everywhere  (810/810 node-months)
 PASS  Neutral scenario reproduces the baseline exactly
-PASS  Scenario recompute under 150 ms (all nodes, all quantiles)  (28 ms, 26 ms, 26 ms)
+PASS  Scenario recompute under 150 ms (all nodes, all quantiles)  (27 ms, 25 ms, 23 ms)
 PASS  Order formula max(0, demand + safety stock - on hand - in transit), rounded, holds on every line  (1332 lines)
 PASS  Rounded line orders add up to the rounded dealership x model need  (74 dealership x model groups)
 PASS  Safety stock equals the service-level path quantile minus the forecast  (POL K3: forecast 29.8, safety 10.7)
 PASS  No negative orders
-PASS  Order recompute under 150 ms  (11 ms)
+PASS  Order recompute under 150 ms  (10 ms)
 PASS  Approved totals on Panorama match the Suggested Order screen  (542 units)
 PASS  Story 1: Zhenlong range (P90 - P10) / P50 wider than every mature model  (Zhenlong Z5 0.81, Z7 0.87 vs widest mature GRAND 0.61)
 PASS  Story 1: Zhenlong keeps rising (season-adjusted forecast above the last 3 months, lifecycle up every month)  (season-adjusted last 3 115, forecast 138 146 127 131 134 135, raw 208 256 127 150 168 173, last 3 135 142 166)
@@ -28,10 +28,11 @@ PASS  Backtest metrics recomputed by code match backtest.json
 PASS  P10 to P90 coverage reported  (group 77.8%, brand 86.4%, model 81.3%, storeModel 79.3%)
 PASS  Generating twice with the same seed gives identical data  (e211837efc5fbd97)
 PASS  Fitting twice gives identical forecasts (and matches forecast.json)  (1f88787495bbb2cb)
-PASS  Dictionaries have identical keys  (1 keys)
+PASS  Dictionaries have identical keys  (313 keys)
+PASS  Every dictionary key used in the source exists  (214 static keys)
 PASS  No empty dictionary values
 PASS  No em dashes, en dashes or semicolons in dictionary values
-PASS  Palette text pairs pass WCAG AA  (24 pairs)
-PASS  Forbidden name not present in source or build output (no build output yet)
+PASS  Palette text pairs pass WCAG AA  (34 pairs)
+PASS  Forbidden name not present in source or build output
 
 ALL CHECKS PASSED

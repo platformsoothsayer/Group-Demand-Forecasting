@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* Colors come only from src/theme/tokens.ts (CSS variables injected in layout.tsx). */
+@theme inline {
+  --color-navy: var(--c-navy);
+  --color-ink: var(--c-navy);
+  --color-deep-teal: var(--c-deep-teal);
+  --color-teal-ink: var(--c-deep-teal);
+  --color-teal: var(--c-teal);
+  --color-teal-soft: var(--c-teal-soft);
+  --color-royal: var(--c-royal);
+  --color-indigo: var(--c-indigo);
+  --color-amber: var(--c-amber);
+  --color-amber-soft: var(--c-amber-soft);
+  --color-coral: var(--c-coral);
+  --color-coral-soft: var(--c-coral-soft);
+  --color-green: var(--c-green);
+  --color-green-soft: var(--c-green-soft);
+  --color-gold: var(--c-gold);
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-line: var(--c-divider);
+  --color-line-2: var(--c-divider-soft);
+  --color-muted: var(--c-secondary);
+  --color-faint: var(--c-secondary);
+  --color-gold-soft: var(--c-gold-soft);
+  --color-indigo-soft: var(--c-indigo-soft);
+  --color-royal-soft: var(--c-royal-soft);
+  --font-sans: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+html.present {
+  font-size: 18.4px; /* about 15 percent larger for screenshots */
+}
+body {
+  background: var(--c-bg);
+  color: var(--c-navy);
+  font-family: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+.kpi-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.015em;
+}
+.panel {
+  background: var(--c-surface);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgb(11 31 58 / 0.05), 0 6px 20px -8px rgb(11 31 58 / 0.12);
+}
+.header-gradient {
+  background: linear-gradient(100deg, var(--c-navy) 0%, var(--c-navy) 55%, color-mix(in srgb, var(--c-navy) 72%, var(--c-deep-teal)) 100%);
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--c-divider);
+  border-radius: 4px;
+}
+.recharts-text {
+  font-family: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
+}
+.recharts-cartesian-axis-tick-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gentle load animations, normal mode only. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.anim-rise {
+  animation: rise 0.45s ease-out both;
+}
+.anim-grow {
+  transform-origin: left center;
+  animation: grow-x 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.anim-fade {
+  animation: fade 0.7s ease-out both;
+}
+html.present *,
+html.present *::before,
+html.present *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+input[type="range"].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--c-divider);
+  outline: none;
+}
+input[type="range"].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 3px solid var(--c-deep-teal);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgb(11 31 58 / 0.25);
+}
+input[type="range"].slider.amber::-webkit-slider-thumb {
+  border-color: var(--c-amber);
+}
+input[type="range"].slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 3px solid var(--c-deep-teal);
+}
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
