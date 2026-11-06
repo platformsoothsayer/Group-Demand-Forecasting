@@ -1,0 +1,37 @@
+PASS  OLS reconciliation solves the normal equations S'(S b - yhat) = 0  (max residual 0.0230 units)
+PASS  Baseline: children sum to parents for P50 at every level and month (67 parent-child sets)  (max gap 3.4e-13)
+PASS  Baseline: children sum to parents on every one of the 500 sample paths  (max gap 0.0e+0)
+PASS  Scenario credit +2: children sum to parents for P50 at every level and month (67 parent-child sets)  (max gap 4.5e-13)
+PASS  Scenario credit +2: children sum to parents on every one of the 500 sample paths  (max gap 0.0e+0)
+PASS  Quantiles ordered P10 <= P25 <= P50 <= P75 <= P90 everywhere  (810/810 node-months)
+PASS  Neutral scenario reproduces the baseline exactly
+PASS  Scenario recompute under 150 ms (all nodes, all quantiles)  (28 ms, 26 ms, 26 ms)
+PASS  Order formula max(0, demand + safety stock - on hand - in transit), rounded, holds on every line  (1332 lines)
+PASS  Rounded line orders add up to the rounded dealership x model need  (74 dealership x model groups)
+PASS  Safety stock equals the service-level path quantile minus the forecast  (POL K3: forecast 29.8, safety 10.7)
+PASS  No negative orders
+PASS  Order recompute under 150 ms  (11 ms)
+PASS  Approved totals on Panorama match the Suggested Order screen  (542 units)
+PASS  Story 1: Zhenlong range (P90 - P10) / P50 wider than every mature model  (Zhenlong Z5 0.81, Z7 0.87 vs widest mature GRAND 0.61)
+PASS  Story 1: Zhenlong keeps rising (season-adjusted forecast above the last 3 months, lifecycle up every month)  (season-adjusted last 3 115, forecast 138 146 127 131 134 135, raw 208 256 127 150 168 173, last 3 135 142 166)
+PASS  Story 2: December is the forecast peak, Buen Fin lifts November, January drops  (Oct 996 Nov 1256 Dec 1387 Jan 785)
+PASS  Story 2: long lead time brands flagged for the January window  (Nordhaus december+january, Solenne january)
+PASS  Story 3: leads and test drives are the top driver for Qiyun at QRO  (leads 10.3 season 2.0 trend 6.1 market 0.1 promo 0.9, next 3 months 101.7%, leads 107.1%)
+PASS  Story 3: leads and test drives are the top driver for Qiyun at PUE  (leads 10.3 season 1.6 trend 4.8 market 0.1 promo 0.8, next 3 months 140.8%, leads 154.9%)
+PASS  Story 4: credit +2 points moves Solenne least of all brands  (Kaido -10.2%, Vantor -10.1%, Nordhaus -5.6%, Solenne -1.4%, Zhenlong -11.1%, Qiyun -11.1%)
+PASS  Story 4: volume and new-entrant brands drop clearly more (at least 3x Solenne and 4 percent)
+PASS  Story 5: Satélite forecast top-trim share exceeds its 12-month history  (forecast 40.0% vs history 37.8%)
+PASS  Story 5: Satélite suggested order leans to the top trim more than its history  (order top-trim share 44.1%)
+PASS  Story 6: K3 forecast is below the same months last year  (460 vs 535 (-14.0%))
+PASS  Story 6: K3 suggested order is below its recent average monthly order  (156 vs 197 units)
+PASS  Backtest metrics recomputed by code match backtest.json
+PASS  P10 to P90 coverage reported  (group 77.8%, brand 86.4%, model 81.3%, storeModel 79.3%)
+PASS  Generating twice with the same seed gives identical data  (e211837efc5fbd97)
+PASS  Fitting twice gives identical forecasts (and matches forecast.json)  (1f88787495bbb2cb)
+PASS  Dictionaries have identical keys  (1 keys)
+PASS  No empty dictionary values
+PASS  No em dashes, en dashes or semicolons in dictionary values
+PASS  Palette text pairs pass WCAG AA  (24 pairs)
+PASS  Forbidden name not present in source or build output (no build output yet)
+
+ALL CHECKS PASSED

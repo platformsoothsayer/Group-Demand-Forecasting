@@ -1,0 +1,35 @@
+{
+  "name": "group-demand-forecast",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "generate": "tsx scripts/generate-data.ts && tsx scripts/fit-models.ts",
+    "predev": "npm run generate",
+    "dev": "next dev",
+    "prebuild": "npm run generate",
+    "build": "next build",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx scripts/verify.ts",
+    "screenshots": "node scripts/screenshots.cjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "next": "15.5.29",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "recharts": "^3.10.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.29",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  }
+}
